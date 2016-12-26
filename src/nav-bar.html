@@ -1,0 +1,12 @@
+<template bindable="router">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">${router.title}</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+          <a data-toggle="collapse" data-target="#skeleton-navigation-navbar-collapse.in" href.bind="row.href">${row.title}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</template>
