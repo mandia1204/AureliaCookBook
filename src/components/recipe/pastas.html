@@ -5,27 +5,31 @@
 
     <div class="row">
       <div class="col s4">
-        <input placeholder="Enter recipe to search" id="recipe-filter" type="text">
+        <input placeholder="Enter recipe to search" id="recipe-filter" type="text" value.bind="recipeFilter">
       </div>
       <div class="col s3">
-        <input type="checkbox" id="recommended-filter" />
+        <input type="checkbox" id="recommended-filter" checked.bind="recommendedFilter" />
         <label for="recommended-filter">Only Recommended</label>
       </div>
     </div>
 
-    <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <a onClick.call="alerta()" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
 
     <table class="striped">
         <thead>
           <tr>
+              <th></th>
               <th data-field="name">Name</th>
               <th data-field="chef">Chef</th>
               <th data-field="category">Category</th>
           </tr>
         </thead>
         <tbody>
-          <tr repeat.for="recipe of recipes">
-            <td>${recipe.name}</td>
+          <tr repeat.for="recipe of filteredRecipes">
+            <td>
+              <img class="dish-img" src="${recipe.url}" />
+            </td>
+            <td>${recipe.name} <i class="material-icons">${recipe.recommended?"thumb_up":""}</i></td>
             <td>${recipe.chef}</td>
             <td>${recipe.category}</td>
           </tr>

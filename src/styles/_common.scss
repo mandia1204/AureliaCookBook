@@ -36,9 +36,14 @@ th {
 #app {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #4d4d4d;
-  // min-width: 320px;
-  // max-width: 1024px;
-  // margin: 0 auto;
+}
+
+$dish-width: 117px;
+$dish-height: 78px;
+
+.dish-img{
+    height: $dish-height;
+    width: $dish-width;
 }
 
 img{ border:0 }
