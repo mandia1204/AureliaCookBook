@@ -1,7 +1,8 @@
 import {computedFrom} from 'aurelia-framework';
 
 export class Home {
-  heading = 'Cookbook Aurelia 1.0';
+  heading = 'Cookbook 1.0';
+  subtitle = 'You can manage your cooking recipes!'
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;

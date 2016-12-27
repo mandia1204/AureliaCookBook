@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Catamaran|Shrikhand');
+
+$primary-color:#009688;
+
+.title {
+  color: $primary-color;
+  font-size: 3em !important;
+  font-family: 'Shrikhand', cursive;
+  text-decoration: underline;
+}
+
+h1 {
+  @extend .title;
+}
+
+h2 {
+  @extend .title;
+  font-size: 2em !important;
+}
+
+h3 {
+  font-size: 1.5em !important;
+}
+
+p {
+  font-family: 'Catamaran', sans-serif;
+  font-size: 1.5em;
+}
+
+th {
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+/* Styles */
+#app {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #4d4d4d;
+  // min-width: 320px;
+  // max-width: 1024px;
+  // margin: 0 auto;
+}
+
+img{ border:0 }
+
+.f-left{
+  float:left;
+}
+
+.f-right{
+  float:right;
+}
