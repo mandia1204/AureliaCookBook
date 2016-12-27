@@ -1,0 +1,25 @@
+<template>
+  <div class="container">
+    <h1>Pastas</h1>
+    <p>${title}</p>
+
+    <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
+
+    <table class="striped">
+        <thead>
+          <tr>
+              <th data-field="name">Name</th>
+              <th data-field="chef">Chef</th>
+              <th data-field="category">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="recipe of recipes">
+            <td>${recipe.name}</td>
+            <td>${recipe.chef}</td>
+            <td>${recipe.category}</td>
+          </tr>
+        </tbody>
+      </table>
+  <div>
+</template>

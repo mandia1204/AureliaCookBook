@@ -12,7 +12,6 @@ export class Home {
   //as well as the corresponding import above.
   @computedFrom('firstName', 'lastName')
   get fullName() {
-    console.log("fullName");
     return `${this.firstName} ${this.lastName}`;
   }
 

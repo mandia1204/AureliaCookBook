@@ -3,8 +3,8 @@ export class App {
     config.title = 'Cookbook Aurelia 1.0';
     config.map([
       { route: ['', 'home'], name: 'home',      moduleId: 'components/home/home',      nav: true, title: 'Home' },
-      { route: 'users',         name: 'users',        moduleId: 'users',        nav: true, title: 'Github Users' },
-      { route: 'child-router',  name: 'child-router', moduleId: 'child-router', nav: true, title: 'Child Router' }
+      { route: 'pastas', name: 'pastas',      moduleId: 'components/recipe/pastas',      nav: true, title: 'Pastas' },
+      { route: 'users',         name: 'users',        moduleId: 'users',        nav: true, title: 'Github Users' }
     ]);
 
     this.router = router;
