@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <a route-href="route: manage; params.bind: { category: 'Salads' }" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <a route-href="route: manage; params.bind: { category: 'Pastas' }" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
 
     <table class="striped">
         <thead>
@@ -22,6 +22,7 @@
               <th data-field="name">Name</th>
               <th data-field="chef">Chef</th>
               <th data-field="category">Category</th>
+              <th></th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,10 @@
             <td>${recipe.name} <i class="material-icons">${recipe.recommended?"thumb_up":""}</i></td>
             <td>${recipe.chef}</td>
             <td>${recipe.category}</td>
+            <td>
+              <a route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">mode_edit</i></a>
+              <a route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">delete</i></a>
+            </td>
           </tr>
         </tbody>
       </table>

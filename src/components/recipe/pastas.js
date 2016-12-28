@@ -26,6 +26,6 @@ export class Pastas{
   }
 
   activate(){
-    return recipeApi.getAllRecipes().then(response=>this.recipes=response.data.filter(r=>r.category=="Pastas"));
+    return recipeApi.getRecipesByCategory("pastas").then(response=>this.recipes=response.data);
   }
 }
