@@ -16,19 +16,12 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <span>
-            <input type="text" value.bind="recipe.category" class="validate">
-          </span>
-          <div show.bind="recipe.category" class="col s4">
-            You selected: ${ recipe.category }!
-          </div>
-          <select id="category" md-select="selected.two-way: recipe.category;">
-            <option model.bind="category" repeat.for="category of categories">
+          <select id="category" md-select value.two-way="recipe.category">
+            <option repeat.for="category of categories">
               ${category.name}
             </option>
           </select>
           <label for="category">Category</label>
-          
         </div>
       </div>
       <div class="row">

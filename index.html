@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
-  <body aurelia-app="main">
+  <body>
     <div class="splash">
       <div class="message">Aurelia Navigation Skeleton</div>
       <i class="fa fa-spinner fa-spin"></i>
@@ -19,22 +19,21 @@
     <!-- Windows 10 Anniversary Update on 2 August 2016. Once that update has pushed out, you may    -->
     <!-- consider removing bluebird from your project and simply using native promises if you do     -->
     <!-- not need to support Internet Explorer.                                                      -->
+
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script src="jspm_packages/npm/bluebird@3.4.1/js/browser/bluebird.min.js"></script>
-    <script src="jspm_packages/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="jspm_packages/npm/materialize-css@0.97.8/dist/js/materialize.min.js"></script>
     <script>
-      System.import('aurelia-bootstrapper');
-      // SystemJS.import('aurelia-bootstrapper').then(bootstrapper => {
-      //   bootstrapper.bootstrap(function(aurelia) {
-      //     aurelia.use
-      //       .standardConfiguration()
-      //       .developmentLogging();
-      //
-      //     aurelia.start().then(() => aurelia.setRoot('app', document.body));
-      //   });
-      // });
+      SystemJS.import('aurelia-bootstrapper').then(bootstrapper => {
+        bootstrapper.bootstrap(function(aurelia) {
+          aurelia.use
+            .standardConfiguration()
+            .developmentLogging()
+            .plugin('aurelia-materialize-bridge', bridge => bridge.useAll());
+
+          aurelia.start().then(() => aurelia.setRoot('app', document.body));
+        });
+      });
     </script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+import 'materialize-css';
+
 export class App {
   configureRouter(config, router) {
     config.title = 'Cookbook Aurelia 1.0';
