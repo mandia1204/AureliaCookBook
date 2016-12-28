@@ -9,12 +9,12 @@ export class ManageRecipePage{
 
   activate(params){
     if(params.id){
-      this.recipe = {name:"Jose Alanya",chef:"The cheff",category:"Salads",recommended:true};
+      recipeApi.getRecipe(params.id).then(response=>this.recipe = response.data);
     }else{
       const category = !params.category?"Pastas":params.category;
       this.recipe = {name:"",chef:"",category:category,url:"",ingredients:[],recommended:false};
     }
-    
-    return recipeApi.getAllCategories().then(response=>this.categories=response.data);
+
+    return recipeApi.getRecipesByCategory("pastas").then(response=>this.categories=response.data);
   }
 }

@@ -3,9 +3,24 @@ import config from './apiConfig';
 /* eslint-disable no-console */
 
 class RecipeApi {
-  static getAllRecipes() {
+  static getAllRecipes(){
     return new Promise((resolve, reject)=>{
         $.get(config.recipeUrl).then(resolve,reject);
+    });
+  }
+
+  static getRecipesByCategory(category){
+    let url = `${config.recipeUrl}/${category}`;
+    return new Promise((resolve, reject)=>{
+        $.get(url).then(resolve,reject);
+    });
+  }
+
+  static getRecipe(id){
+    let url = `${config.recipeUrl}/${id}`;
+
+    return new Promise((resolve, reject)=>{
+        $.get(url).then(resolve,reject);
     });
   }
 
