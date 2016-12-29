@@ -1,1 +1,22 @@
-base page
+<template>
+  <div>
+    <h1>${title}</h1>
+    <p>${body}</p>
+
+    <require from="./searchRecipe.html"></require>
+    <searchRecipe recipe.two-way="recipeFilter" recommended.two-way="recommendedFilter"></searchRecipe>
+
+    <a route-href="route: manage; params.bind: { category: page }" class="btn-floating btn-small waves-effect waves-light red">
+      <i class="material-icons">add</i>
+    </a>
+
+    <require from="./recipeList.html"></require>
+    <recipeList opendeletedialog.call="openDeleteModal(id)" recipes.bind="filteredRecipes"></recipeList>
+
+    <require from="../../common/confirmDialog.html"></require>
+    <confirmDialog title="Delete Recipe" body="Are you sure to delete the Recipe?"
+    confirmDialog.ref="confirmDeleteDialog" submit.call="deleteRecipe()"></confirmDialog>
+
+    <input type="hidden" id="hdn-recipe-id" ref="selectedRecipeId" />
+  <div>
+</template>
