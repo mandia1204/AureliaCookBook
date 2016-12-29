@@ -13,7 +13,7 @@ export class ManageRecipePage{
 
   save(){
     recipeApi.saveRecipe(this.recipe).then(()=>{
-      Materialize.toast('Recipe Saved!', 2000);
+      Materialize.toast('Recipe Saved!', 2000, 'rounded');
       this.router.navigate(this.recipe.category.toLowerCase());
     }
     );

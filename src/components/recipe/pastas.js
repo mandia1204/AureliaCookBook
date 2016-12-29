@@ -10,11 +10,7 @@ export class Pastas{
   recipeFilter ="";
   recommendedFilter =false;
 
-  alerta(){
-    alert(this.recommendedFilter);
-  }
-
-  @computedFrom('recipeFilter','recommendedFilter')
+  @computedFrom('recipeFilter','recommendedFilter','recipes')
   get filteredRecipes(){
     const filters = {"name":this.recipeFilter.toLowerCase(),"onlyRecommended":this.recommendedFilter};
     return this.recipes.filter(r=> this.filterRecipe(r,filters));
@@ -25,7 +21,23 @@ export class Pastas{
         && (!f.onlyRecommended || recipe.recommended==true);
   }
 
+  openDeleteModal(id){
+    this.selectedRecipeId.value = id;
+    this.deleteModal.open();
+  }
+
+  deleteRecipe(){
+    let id = this.selectedRecipeId.value;
+
+    recipeApi.deleteRecipe(id)
+      .then(()=>{
+        this.recipes = this.recipes.filter(r=>r._id!=id);
+        Materialize.toast('Recipe Deleted!', 2000, 'rounded');
+      });
+  }
+
   activate(){
+    $('.modal').modal();
     return recipeApi.getRecipesByCategory("pastas").then(response=>this.recipes=response.data);
   }
 }

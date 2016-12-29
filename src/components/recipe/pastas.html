@@ -35,10 +35,21 @@
             <td>${recipe.category}</td>
             <td>
               <a route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">mode_edit</i></a>
-              <a route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">delete</i></a>
+              <a click.delegate="openDeleteModal(recipe._id)" route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">delete</i></a>
             </td>
           </tr>
         </tbody>
       </table>
+      <div id="deleteModal" md-modal md-modal.ref="deleteModal">
+        <div class="modal-content">
+          <h4>Delete Recipe</h4>
+          <p>Are you sure to delete the Recipe?</p>
+        </div>
+        <div class="modal-footer">
+          <a click.delegate="deleteRecipe()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Submit</a>
+          <a  md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Cancel</a>
+        </div>
+      </div>
+      <input type="hidden" id="hdn-recipe-id" ref="selectedRecipeId" />
   <div>
 </template>
