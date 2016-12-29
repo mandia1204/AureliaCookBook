@@ -4,10 +4,10 @@
     <p>${title}</p>
 
     <div class="row">
-      <div class="col s4">
+      <div class="input-field col s4">
         <input placeholder="Enter recipe to search" id="recipe-filter" type="text" value.bind="recipeFilter">
       </div>
-      <div class="col s3">
+      <div class="input-field  col s3">
         <input type="checkbox" id="recommended-filter" checked.bind="recommendedFilter" />
         <label for="recommended-filter">Only Recommended</label>
       </div>
@@ -15,41 +15,19 @@
 
     <a route-href="route: manage; params.bind: { category: 'Pastas' }" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
 
-    <table class="striped">
-        <thead>
-          <tr>
-              <th></th>
-              <th data-field="name">Name</th>
-              <th data-field="chef">Chef</th>
-              <th data-field="category">Category</th>
-              <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr repeat.for="recipe of filteredRecipes">
-            <td>
-              <img class="dish-img" src="${recipe.url}" />
-            </td>
-            <td>${recipe.name} <i class="material-icons">${recipe.recommended?"thumb_up":""}</i></td>
-            <td>${recipe.chef}</td>
-            <td>${recipe.category}</td>
-            <td>
-              <a route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">mode_edit</i></a>
-              <a click.delegate="openDeleteModal(recipe._id)" route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">delete</i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div id="deleteModal" md-modal md-modal.ref="deleteModal">
-        <div class="modal-content">
-          <h4>Delete Recipe</h4>
-          <p>Are you sure to delete the Recipe?</p>
-        </div>
-        <div class="modal-footer">
-          <a click.delegate="deleteRecipe()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Submit</a>
-          <a  md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Cancel</a>
-        </div>
+    <require from="./base/recipeList.html"></require>
+    <recipeList opendeletedialog.call="openDeleteModal(id)" recipes.bind="filteredRecipes"></recipeList>
+
+    <div id="deleteModal" md-modal md-modal.ref="deleteModal">
+      <div class="modal-content">
+        <h4>Delete Recipe</h4>
+        <p>Are you sure to delete the Recipe?</p>
       </div>
-      <input type="hidden" id="hdn-recipe-id" ref="selectedRecipeId" />
+      <div class="modal-footer">
+        <a click.delegate="deleteRecipe()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Submit</a>
+        <a  md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Cancel</a>
+      </div>
+    </div>
+    <input type="hidden" id="hdn-recipe-id" ref="selectedRecipeId" />
   <div>
 </template>

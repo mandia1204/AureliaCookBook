@@ -1,0 +1,27 @@
+<template bindable="recipes,texto,opendeletedialog">
+  <table class="striped">
+      <thead>
+        <tr>
+            <th></th>
+            <th data-field="name">Name</th>
+            <th data-field="chef">Chef</th>
+            <th data-field="category">Category</th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr repeat.for="recipe of recipes">
+          <td>
+            <img class="dish-img" src="${recipe.url}" />
+          </td>
+          <td>${recipe.name} <i class="material-icons">${recipe.recommended?"thumb_up":""}</i></td>
+          <td>${recipe.chef}</td>
+          <td>${recipe.category}</td>
+          <td>
+            <a route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">mode_edit</i></a>
+            <a click.delegate="opendeletedialog({id:recipe._id})" route-href="route: manageEdit; params.bind: { id: recipe._id }"><i class="material-icons">delete</i></a>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</template>

@@ -9,6 +9,7 @@ export class Pastas{
   recipes = [];
   recipeFilter ="";
   recommendedFilter =false;
+  myrecipes = [{name:"name",chef:"chef",category:"Salads"}];
 
   @computedFrom('recipeFilter','recommendedFilter','recipes')
   get filteredRecipes(){
@@ -24,6 +25,10 @@ export class Pastas{
   openDeleteModal(id){
     this.selectedRecipeId.value = id;
     this.deleteModal.open();
+  }
+
+  showDialog(id){
+    alert(id);
   }
 
   deleteRecipe(){
