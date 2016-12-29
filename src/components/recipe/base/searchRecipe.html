@@ -1,0 +1,11 @@
+<template bindable="recipe,recommended">
+  <div class="row">
+    <div class="input-field col s4">
+      <input placeholder="Enter recipe to search" type="text" value.bind="recipe">
+    </div>
+    <div class="input-field  col s3">
+      <input type="checkbox" id="recommended-filter" checked.bind="recommended" />
+      <label for="recommended-filter">Only Recommended</label>
+    </div>
+  </div>
+</template>

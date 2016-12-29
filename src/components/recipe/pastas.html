@@ -3,15 +3,8 @@
     <h1>Pastas</h1>
     <p>${title}</p>
 
-    <div class="row">
-      <div class="input-field col s4">
-        <input placeholder="Enter recipe to search" id="recipe-filter" type="text" value.bind="recipeFilter">
-      </div>
-      <div class="input-field  col s3">
-        <input type="checkbox" id="recommended-filter" checked.bind="recommendedFilter" />
-        <label for="recommended-filter">Only Recommended</label>
-      </div>
-    </div>
+    <require from="./base/searchRecipe.html"></require>
+    <searchRecipe recipe.two-way="recipeFilter" recommended.two-way="recommendedFilter"></searchRecipe>
 
     <a route-href="route: manage; params.bind: { category: 'Pastas' }" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
 
