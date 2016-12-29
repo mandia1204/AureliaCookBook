@@ -6,21 +6,17 @@
     <require from="./base/searchRecipe.html"></require>
     <searchRecipe recipe.two-way="recipeFilter" recommended.two-way="recommendedFilter"></searchRecipe>
 
-    <a route-href="route: manage; params.bind: { category: 'Pastas' }" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <a route-href="route: manage; params.bind: { category: 'Pastas' }" class="btn-floating btn-small waves-effect waves-light red">
+      <i class="material-icons">add</i>
+    </a>
 
     <require from="./base/recipeList.html"></require>
     <recipeList opendeletedialog.call="openDeleteModal(id)" recipes.bind="filteredRecipes"></recipeList>
 
-    <div id="deleteModal" md-modal md-modal.ref="deleteModal">
-      <div class="modal-content">
-        <h4>Delete Recipe</h4>
-        <p>Are you sure to delete the Recipe?</p>
-      </div>
-      <div class="modal-footer">
-        <a click.delegate="deleteRecipe()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Submit</a>
-        <a  md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Cancel</a>
-      </div>
-    </div>
+    <require from="../common/confirmDialog.html"></require>
+    <confirmDialog title="Delete Recipe" body="Are you sure to delete the Recipe?"
+    confirmDialog.ref="confirmDeleteDialog" submit.call="deleteRecipe()"></confirmDialog>
+
     <input type="hidden" id="hdn-recipe-id" ref="selectedRecipeId" />
   <div>
 </template>
