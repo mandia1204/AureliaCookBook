@@ -31,11 +31,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="col s12">
           <h3>Ingredients (${recipe.ingredients.length})</h3>
 
           <require from="./ingredient/ingredientList"></require>
-          <ingredient-list ingredients.bind="recipe.ingredients"></ingredient-list>
+          <ingredient-list delete.call="deleteIngredient(index)" update.call="updateIngredient(index,value)"
+           ingredients.bind="recipe.ingredients"></ingredient-list>
         </div>
       </div>
       <div class="row">

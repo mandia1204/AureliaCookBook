@@ -12,6 +12,14 @@ export class RecipeForm{
     this.save();
   }
 
+  deleteIngredient(index){
+    this.recipe.ingredients.splice(index, 1);
+  }
+
+  updateIngredient(index,value){
+    this.recipe.ingredients[index].name = value;
+  }
+
   attached(){
     $("#category").val(this.recipe.category);
     $('select').material_select();
