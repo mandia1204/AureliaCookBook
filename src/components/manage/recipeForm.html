@@ -32,6 +32,14 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
+          <h3>Ingredients (${recipe.ingredients.length})</h3>
+
+          <require from="./ingredient/ingredientList"></require>
+          <ingredient-list ingredients.bind="recipe.ingredients"></ingredient-list>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
           <input type="checkbox" id="recommended" checked.bind="recipe.recommended" />
           <label for="recommended" class="active">Recommended?</label>
         </div>

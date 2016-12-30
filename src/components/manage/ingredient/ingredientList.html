@@ -1,0 +1,21 @@
+<template>
+  <div>
+    <md-collection>
+      <md-collection-item repeat.for="ingredient of ingredients" class="accent-text ${editIndex==$index?'active':''}">
+        <span if.bind="editIndex!=$index">${ingredient.name}</span>
+        <input if.bind="editIndex==$index" class="text-inline" type="text" value="${ingredient.name}" />
+
+        <div class="secondary-content">
+          <a href="javascript:void()" if.bind="editIndex!=$index" click.delegate="edit($index)">
+            <i class="material-icons">mode_edit</i>
+          </a>
+          <a href="javascript:void()" if.bind="editIndex!=$index"><i class="material-icons">delete</i></a>
+          <a href="javascript:void()" if.bind="editIndex==$index"><i class="material-icons">save</i></a>
+          <a href="javascript:void()" if.bind="editIndex==$index" click.delegate="cancel()">
+            <i class="material-icons">cancel</i>
+          </a>
+        </div>
+      </md-collection-item>
+    </md-collection>
+  </div>
+</template>
