@@ -20,6 +20,10 @@ export class RecipeForm{
     this.recipe.ingredients[index].name = value;
   }
 
+  addIngredient(name){
+    this.recipe.ingredients = this.recipe.ingredients.concat([{name:name}])
+  }
+
   attached(){
     $("#category").val(this.recipe.category);
     $('select').material_select();

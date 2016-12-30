@@ -34,9 +34,13 @@
         <div class="col s12">
           <h3>Ingredients (${recipe.ingredients.length})</h3>
 
+          <require from="./ingredient/addIngredient"></require>
+          <add-ingredient add.call="addIngredient(name)"></add-ingredient>
+
           <require from="./ingredient/ingredientList"></require>
           <ingredient-list delete.call="deleteIngredient(index)" update.call="updateIngredient(index,value)"
-           ingredients.bind="recipe.ingredients"></ingredient-list>
+            ingredients.bind="recipe.ingredients"></ingredient-list>
+
         </div>
       </div>
       <div class="row">
