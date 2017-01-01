@@ -3,20 +3,15 @@ import config from './apiConfig';
 /* eslint-disable no-console */
 
 class RecipeApi {
-  static getAllRecipes(){
-    return new Promise((resolve, reject)=>{
-        $.get(config.recipeUrl).then(resolve,reject);
-    });
-  }
 
-  static getRecipesByCategory(category){
+  getRecipesByCategory(category){
     let url = `${config.recipeUrl}/${category}`;
     return new Promise((resolve, reject)=>{
         $.get(url).then(resolve,reject);
     });
   }
 
-  static getRecipe(id){
+  getRecipe(id){
     let url = `${config.recipeUrl}/${id}`;
 
     return new Promise((resolve, reject)=>{
@@ -24,7 +19,7 @@ class RecipeApi {
     });
   }
 
-  static saveRecipe(recipe) {
+  saveRecipe(recipe) {
     let method = "POST";
     let url = config.recipeUrl;
 
@@ -43,7 +38,7 @@ class RecipeApi {
     });
   }
 
-  static deleteRecipe(recipeId){
+  deleteRecipe(recipeId){
     if(recipeId){
       return new Promise((resolve, reject)=>{
         $.ajax({
@@ -55,13 +50,13 @@ class RecipeApi {
     }
   }
 
-  static getAllCategories() {
+  getAllCategories() {
     return new Promise((resolve, reject)=>{
         $.get(config.categoryUrl).then(resolve,reject);
     });
   }
 
-  static getAllChefs() {
+  getAllChefs() {
     return new Promise((resolve, reject)=>{
         $.get(config.chefUrl).then(resolve,reject);
     });

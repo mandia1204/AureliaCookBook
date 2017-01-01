@@ -1,6 +1,7 @@
-import recipeApi from '../../../api/recipeApi';
-import {computedFrom,bindable} from 'aurelia-framework';
+import RecipeApi from '../../../api/recipeApi';
+import {inject,computedFrom,bindable} from 'aurelia-framework';
 
+@inject(RecipeApi)
 export class BasePage{
   @bindable title = "";
   @bindable body = "";
@@ -9,6 +10,10 @@ export class BasePage{
   recipes = [];
   recipeFilter ="";
   recommendedFilter =false;
+
+  constructor(recipeApi){
+    this.recipeApi = recipeApi;
+  }
 
   @computedFrom('recipeFilter','recommendedFilter','recipes')
   get filteredRecipes(){
@@ -28,7 +33,7 @@ export class BasePage{
 
   deleteRecipe(){
     let id = this.selectedRecipeId.value;
-    recipeApi.deleteRecipe(id)
+    this.recipeApi.deleteRecipe(id)
       .then(()=>{
         this.recipes = this.recipes.filter(r=>r._id!=id);
         Materialize.toast('Recipe Deleted!', 2000, 'rounded');
@@ -37,6 +42,6 @@ export class BasePage{
 
   attached(){
     $('.modal').modal();
-    return recipeApi.getRecipesByCategory(this.page.toLowerCase()).then(response=>this.recipes=response.data);
+    return this.recipeApi.getRecipesByCategory(this.page.toLowerCase()).then(response=>this.recipes=response.data);
   }
 }
