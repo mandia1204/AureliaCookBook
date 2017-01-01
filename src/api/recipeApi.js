@@ -2,23 +2,20 @@ import $ from 'jquery';
 import config from './apiConfig';
 /* eslint-disable no-console */
 
-class RecipeApi {
-
+const apiProto = {
   getRecipesByCategory(category){
     let url = `${config.recipeUrl}/${category}`;
     return new Promise((resolve, reject)=>{
         $.get(url).then(resolve,reject);
     });
-  }
-
+  },
   getRecipe(id){
     let url = `${config.recipeUrl}/${id}`;
 
     return new Promise((resolve, reject)=>{
         $.get(url).then(resolve,reject);
     });
-  }
-
+  },
   saveRecipe(recipe) {
     let method = "POST";
     let url = config.recipeUrl;
@@ -36,8 +33,7 @@ class RecipeApi {
           data: JSON.stringify(recipe)
       }).then(resolve,reject);
     });
-  }
-
+  },
   deleteRecipe(recipeId){
     if(recipeId){
       return new Promise((resolve, reject)=>{
@@ -48,19 +44,21 @@ class RecipeApi {
         }).then(resolve,reject);
       });
     }
-  }
-
+  },
   getAllCategories() {
     return new Promise((resolve, reject)=>{
         $.get(config.categoryUrl).then(resolve,reject);
     });
-  }
-
+  },
   getAllChefs() {
     return new Promise((resolve, reject)=>{
         $.get(config.chefUrl).then(resolve,reject);
     });
   }
+};
+
+const RecipeApi = ()=> {
+    return Object.create(apiProto);
 }
 
 export default RecipeApi;
