@@ -225,5 +225,13 @@ System.config({
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
     }
+  },
+  packages: {
+    "materialize-css": {
+      "main": "dist/js/materialize.js",
+      "map": {
+        "../css/materialize.css": "../../../src/styles/styles.scss"
+      }
+    }
   }
 });
